@@ -1,60 +1,73 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
+import Loading from "../components/Loading"
 
-export default class SinglePost extends Component {
+class SinglePost extends Component {
+    constructor () {
+        super()
+        this.state = {
+            post: {}
+        }
+    }
     componentDidMount(){
-        document.title = "SinglePost - Abdulsamet Şahin"
+        const slug = this.props.match.params.slug;
+
+        console.log(this.props);
+
+        fetch(this.props.apiUrl + "/posts/show-by-slug/" + slug)
+        .then(res => res.json())
+        .then(data => {
+            this.setState({post: data});
+            
+            document.title = data.name + " - Abdulsamet Şahin"
+        })
+
     }
     render() {
+
+        if (this.state.post.id) {
+            return (
+                <div id="single-post">
+                    <div className="photo">
+                        <img 
+                            className="hide-mobile"
+                            src={JSON.parse(this.state.post.image)[0]}
+                            alt={this.state.post.name}
+                        ></img>
+                        <img 
+                            className="show-mobile"
+                            src={JSON.parse(this.state.post.image)[1]}
+                            alt={this.state.post.name}
+                        ></img>
+                    </div>
+                    <div className="post">
+                        <div className="back">
+                            <i  
+                                onClick={() => this.props.history.goBack()}
+                                className="fa fa-long-arrow-left"
+                            ></i>
+                        </div>
+                        <h1 className="title">
+                            {this.state.post.name}
+                        </h1>
+                        <div className="date">
+                            {this.state.post.created_at}
+                        </div>
+    
+                        <div className="content" 
+                        dangerouslySetInnerHTML={{ __html: this.state.post.body }}>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+        
         return (
             <div id="single-post">
-                <div className="photo">
-                    <img src="https://storyhub-personal-lite-tarex.redq.now.sh/static/c192e547baa4020498d0c858f4095837/a4f35/preview.webp"></img>
-                </div>
-                <div className="post">
-                    <h1 className="title">
-                        A Peek Into Scandinavia's Origin
-                    </h1>
-                    <div className="date">
-                        27 MAY, 2019
-                    </div>
-
-                    <div className="content">
-                        <p>
-                            Steve Holt! No, I did not kill Kitty. However, I am going to oblige and answer the nice officer’s questions because I am an honest man with no secrets to hide. I don’t criticize you! And if you’re worried about criticism, sometimes a diet is the best defense.
-                        </p>
-                        <p>Army had half a day. Marry me. We just call it a sausage.</p>
-
-                        <p>
-                            Guy’s a pro. Now, when you do this without getting punched in the chest, you’ll have more fun. He’ll want to use your yacht, and I don’t want this thing smelling like fish. We just call it a sausage. I don’t criticize you! And if you’re worried about criticism, sometimes a diet is the best defense.
-                        </p>
-                        <p>
-                            No! I was ashamed to be SEEN with you. I like being with you. There’s so many poorly chosen words in that sentence. No… but I’d like to be asked! Whoa, this guy’s straight?  
-                        </p>
-                        <p>
-                            Steve Holt! No, I did not kill Kitty. However, I am going to oblige and answer the nice officer’s questions because I am an honest man with no secrets to hide. I don’t criticize you! And if you’re worried about criticism, sometimes a diet is the best defense.
-                        </p>
-                        <p>Army had half a day. Marry me. We just call it a sausage.</p>
-
-                        <p>
-                            Guy’s a pro. Now, when you do this without getting punched in the chest, you’ll have more fun. He’ll want to use your yacht, and I don’t want this thing smelling like fish. We just call it a sausage. I don’t criticize you! And if you’re worried about criticism, sometimes a diet is the best defense.
-                        </p>
-                        <p>
-                            No! I was ashamed to be SEEN with you. I like being with you. There’s so many poorly chosen words in that sentence. No… but I’d like to be asked! Whoa, this guy’s straight?  
-                        </p>
-                        <p>
-                            Steve Holt! No, I did not kill Kitty. However, I am going to oblige and answer the nice officer’s questions because I am an honest man with no secrets to hide. I don’t criticize you! And if you’re worried about criticism, sometimes a diet is the best defense.
-                        </p>
-                        <p>Army had half a day. Marry me. We just call it a sausage.</p>
-
-                        <p>
-                            Guy’s a pro. Now, when you do this without getting punched in the chest, you’ll have more fun. He’ll want to use your yacht, and I don’t want this thing smelling like fish. We just call it a sausage. I don’t criticize you! And if you’re worried about criticism, sometimes a diet is the best defense.
-                        </p>
-                        <p>
-                            No! I was ashamed to be SEEN with you. I like being with you. There’s so many poorly chosen words in that sentence. No… but I’d like to be asked! Whoa, this guy’s straight?  
-                        </p>
-                    </div>
-                </div>
+                <Loading />
             </div>
         )
     }
 }
+
+export default withRouter(SinglePost)

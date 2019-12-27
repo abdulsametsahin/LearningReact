@@ -8,7 +8,7 @@ export default class Me extends Component {
             <div className="me">
                 <div className="center2">
                     <div className="photo">
-                        <img src={pp}></img>
+                        <img src={pp} alt="Abdulsamet Şahin"></img>
                     </div>
                     <div className="info">
                         <h1>
@@ -18,16 +18,16 @@ export default class Me extends Component {
                             Breakfast procuring no end happiness allowance assurance frank. Met simplicity nor difficulty unreserved who. Entreaties mr conviction dissimilar me astonished estimating cultivated.
                         </p>
                         <div className="social">
-                            <a href="#">
+                            <a href="/">
                                 <i className="fa fa-facebook"></i>
                             </a>
-                            <a href="#">
+                            <a href="/">
                                 <i className="fa fa-instagram"></i>
                             </a>
-                            <a href="#">
+                            <a href="/">
                                 <i className="fa fa-twitter"></i>
                             </a>
-                            <a href="#">
+                            <a href="/">
                                 <i className="fa fa-github"></i>
                             </a>
                         </div>

@@ -7,32 +7,32 @@ export default class Post extends Component {
         this.props = props;
     }
     render() {
+
+        const tags = JSON.parse(this.props.post.tags).map(tag => <Link key={tag} to={"/tag/"+tag}>#{tag}</Link>);
+
         return (
             <div className="post">
                 <div className="photo">
-                    <img src="https://storyhub-personal-lite-tarex.redq.now.sh/static/c192e547baa4020498d0c858f4095837/e4ec6/preview.webp"/>
+                    <img 
+                        src={JSON.parse(this.props.post.image)[1]}
+                        alt={this.props.post.name}
+                        />
                 </div>
                 <div className="detail">
                     <div className="tags">
-                        <a href="#">
-                            #react
-                        </a>
-                        <a href="#">
-                            #js
-                        </a>
-                        <a href="#">
-                            #markdown
-                        </a>
+                        {
+                            tags
+                        }
                     </div>
-                    <Link to="/posts/post-slug">
+                    <Link to={"/posts/" + this.props.post.slug}>
                         <h2>
-                            {this.props.post.title}
+                            {this.props.post.name}
                         </h2>
                         <p>
-                            Steve Holt! No, I did not kill Kitty. However, I am going to oblige and answer the nice officer’s questions because I am an honest man with no secrets to hide. I don’t criticize you! And if you’re worried about criticism, sometimes a diet is the best defense.
+                            {this.props.post.seo_description}    
                         </p>
 
-                        <span className="read-more">Read More</span>
+                        <span className="read-more">Okumaya devam et</span>
                     </Link>
                 </div>
             </div>

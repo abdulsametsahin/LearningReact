@@ -140,11 +140,10 @@ body {
 			margin-bottom: 70px;
 
 			.photo {
-				width: 450px;
-				margin-right: 20px;
+				margin-right: 40px;
 
 				img {
-					max-width: 100%;
+					width: 350px;
 				}
 			}
 
@@ -187,16 +186,23 @@ body {
 	display: flex;
 
 	.photo {
-		width: 100%;
+		width: 450px;
 		margin-right: 100px;
 		img {
-			width: 100%;
+			width: 450px;
 			box-shadow: 0 0 10px rgba(0,0,0,.1);
 			border-radius: 5px;
 		}
 	}
 
 	.post {
+
+		.back {
+			font-size: 21px;
+			cursor: pointer;
+			margin-bottom: 10px;
+		}
+
 		h1.title {
 			font-weight: bolder;
 		}
@@ -292,6 +298,118 @@ body {
 			margin-top: 50px;
 			width: 130px;
 			cursor: pointer;
+		}
+	}
+}
+
+#loading {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	padding-top: 50px;
+}
+
+.show-mobile {
+	display: none !important;
+}
+
+@media only screen and (max-width: 600px) {
+	.hide-mobile {
+		display: none !important;
+	}
+
+	.show-mobile {
+		display: unset !important;
+	}
+
+	.header {
+		padding: 0;
+
+		.center {
+			.menu {
+				position: absolute;
+				left: 0;
+				width: 250px;
+				background: #eee;
+				top: 0;
+				bottom: 0;
+				z-index: 999;
+				display: none;
+
+				a, span {
+					box-sizing: border-box;
+					display: block;
+					width: 100%;
+					padding: 0;
+					margin: 0;
+					padding: 10px;
+					border-bottom: 1px solid #ddd;
+				}
+			}
+		}
+	}
+
+	#app {
+		width: 100vw;
+		max-width: 100vw;
+	}
+
+	.center, .center2, .center3 {
+		width: 90%;
+		max-width: 90%;
+		margin: 5%;
+	}
+	
+	#single-post {
+		flex-direction: column;
+
+		.photo {
+			margin-right: 0;
+			margin-bottom: 50px;
+			width: 100%;
+
+			img {
+				width: 100%;
+			}
+		}
+	}
+
+	#home {
+		.me {
+			.center2 {
+				text-align: center;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;
+
+				.photo {
+					border-radius: 5px;
+					margin-right: 0;
+					margin-bottom: 20px;
+					max-width: 350px;
+
+					img {
+						border-radius: 5px;
+					}
+				}
+			}
+		}
+	}
+
+	.posts {
+		.posts-list {
+			.post {
+				flex-direction: column;
+				
+				.photo {
+					width: calc(90vw);
+					margin-bottom: 20px;
+
+					img {
+						width: 100%;
+					}
+				}
+			}
 		}
 	}
 }

@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom"
 
 // Pages
@@ -11,6 +10,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import SinglePost from './pages/SinglePost'
+import Tag from './pages/Tag'
 
 // Components
 import Header from './components/Header'
@@ -19,14 +19,18 @@ class App extends React.Component {
 	constructor () {
 		super()
 		this.state = {
-			posts: []
+			posts: [],
+			apiUrl: 'http://localhost:8000'
 		};
 	}
 	componentWillMount () {
-		fetch('https://jsonplaceholder.typicode.com/posts')
+		fetch(this.state.apiUrl + '/posts')
 		.then(res => res.json())
 		.then(data => {
-			this.setState({posts: data});
+			this.setState(prevState => {
+				prevState.posts = data;
+				return prevState;
+			});
 		});
 	}
   render () {
@@ -42,7 +46,10 @@ class App extends React.Component {
 							<Contact />
 						</Route>
 						<Route exact path="/posts/:slug">
-							<SinglePost />
+							<SinglePost apiUrl={this.state.apiUrl} />
+						</Route>
+						<Route exact path="/tag/:tagName">
+							<Tag apiUrl={this.state.apiUrl} />
 						</Route>
 						<Route exact path="/">
 							<Home posts={this.state.posts} />
