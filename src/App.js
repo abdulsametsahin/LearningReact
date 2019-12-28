@@ -11,6 +11,7 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import SinglePost from './pages/SinglePost'
 import Tag from './pages/Tag'
+import Search from './pages/Search'
 
 // Components
 import Header from './components/Header'
@@ -20,7 +21,8 @@ class App extends React.Component {
 		super()
 		this.state = {
 			posts: [],
-			apiUrl: 'http://localhost:8000'
+			apiUrl: 'http://localhost:8000',
+			showSearch: false,
 		};
 	}
 	componentWillMount () {
@@ -33,11 +35,12 @@ class App extends React.Component {
 			});
 		});
 	}
+
   	render () {
 		return (
 			<Router>
 				<div id="app">
-					<Header />
+					<Header toggleSearch={this.toggleSearch} />
 					<Switch>
 						<Route exact path="/about">
 							<About />
@@ -47,6 +50,9 @@ class App extends React.Component {
 						</Route>
 						<Route exact path="/posts/:slug">
 							<SinglePost apiUrl={this.state.apiUrl} />
+						</Route>
+						<Route exact path="/search/:query">
+							<Search apiUrl={this.state.apiUrl} />
 						</Route>
 						<Route exact path="/tag/:tagName">
 							<Tag apiUrl={this.state.apiUrl} />

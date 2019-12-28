@@ -26,6 +26,13 @@ body {
   margin: 0 auto;
 }
 
+.no-result {
+  margin: 30px auto;
+  text-align: center;
+  font-size: 45px;
+  color: #ccc;
+}
+
 .header {
   padding: 25px 0;
 }
@@ -73,6 +80,35 @@ body {
 }
 
 .header .menu a.search {
+  font-size: 21px;
+}
+
+.header .menu span {
+  cursor: pointer;
+}
+
+.search-bar {
+  background: #FAFAFA;
+  padding: 3vw 0;
+  margin-bottom: 20px;
+}
+
+.search-bar .center2 {
+  position: relative;
+}
+
+.search-bar .center2 input {
+  width: 100%;
+  font-size: 21px;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.search-bar .center2 i {
+  cursor: pointer;
+  position: absolute;
+  right: 0;
   font-size: 21px;
 }
 
@@ -361,6 +397,7 @@ body {
     margin: 0;
     padding: 10px;
     border-bottom: 1px solid #ddd;
+    cursor: pointer;
   }
   #app {
     width: 100vw;

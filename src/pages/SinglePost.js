@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import Loading from "../components/Loading"
+import Comment from "../components/Comment"
 
 class SinglePost extends Component {
     constructor () {
@@ -57,6 +58,8 @@ class SinglePost extends Component {
                         <div className="content" 
                         dangerouslySetInnerHTML={{ __html: this.state.post.body }}>
                         </div>
+
+                        <Comment />
                     </div>
                 </div>
             )

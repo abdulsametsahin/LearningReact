@@ -27,6 +27,13 @@ body {
 	margin: 0 auto;
 }
 
+.no-result {
+	margin: 30px auto;
+	text-align: center;
+	font-size: 45px;
+	color: #ccc;
+}
+
 .header {
 	padding: 25px 0;
 	.center {
@@ -64,6 +71,34 @@ body {
 			&.search {
 				font-size: 21px;
 			}
+		}
+
+		span {
+			cursor: pointer;
+		}
+	}
+}
+
+.search-bar {
+	background: #FAFAFA;
+	padding: 3vw 0;
+	margin-bottom: 20px;
+
+	.center2 {
+		position: relative;
+		input {
+			width: 100%;
+			font-size: 21px;
+			border: none;
+			background: transparent;
+			outline: none;
+		}
+	
+		i {
+			cursor: pointer;
+			position: absolute;
+			right: 0;
+			font-size: 21px;
 		}
 	}
 }
@@ -344,6 +379,7 @@ body {
 					margin: 0;
 					padding: 10px;
 					border-bottom: 1px solid #ddd;
+					cursor: pointer;
 				}
 			}
 		}
